@@ -1,0 +1,18 @@
+version: "3"
+services:
+  db:
+    image: mongo
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb:/data/db
+  meilisearch:
+      image: 'getmeili/meilisearch:latest'
+      ports:
+          - '7700:7700'
+      volumes:
+          - meilisearch:/data/ms
+volumes:
+  - mongodb:
+  - meilisearch:
